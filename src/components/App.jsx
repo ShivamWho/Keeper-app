@@ -8,12 +8,12 @@ function App() {
   const [notes, setNotes] = useState([]);
 
   function addNote(newNote) {
-    setNotes((prevValue) => {
-      return [...prevValue, newNote];
+    setNotes((prevNotes) => {
+      return [...prevNotes, newNote];
     });
   }
 
-  function deleteThisNote(id) {
+  function deleteNote(id) {
     setNotes((prevNotes) => {
       return prevNotes.filter((noteItem, index) => {
         return index !== id;
@@ -32,7 +32,7 @@ function App() {
             id={index}
             title={noteItem.title}
             content={noteItem.content}
-            deleteNote={deleteThisNote}
+            onDelete={deleteNote}
           />
         );
       })}
